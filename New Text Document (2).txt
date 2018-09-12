@@ -1,0 +1,75 @@
+#include <iostream>
+#include <ctime>
+#include <bits/stdc++.h>
+
+
+using namespace std;
+int nodeNumber_count=0;
+
+
+class node{
+    public:
+           int ownerId;
+           vector<node*> children;        
+           
+    
+    string timeStamp;
+    string data;
+    string nodeId;
+    int nodeNumber;
+    node* parent;
+    string hashValue;
+    
+    node(string ownername,int ownerid,int number,node* par,float dd){
+        ownerId=ownerid;
+        nodeNumber=number;
+       parent=par;
+         time_t now = time(0);
+            timeStamp = ctime(&now);
+            // data=encc(ownerId,ownername,dd,);
+           data=dd;
+             
+    }
+
+// string encc(){
+
+//     return ;
+// }
+
+
+};
+
+
+
+
+node* createNode(int ownerId,float value,string ownerName,int ownerid,node *parent){
+ 
+ 
+   
+    
+    node *n=new node(ownerName,ownerId,nodeNumber_count++,parent,value);
+    
+   
+    if(n->parent!=NULL){
+        n->parent->children.push_back(n);
+    }
+    
+    
+    
+    n->nodeId="";
+    
+    
+    return n;
+    
+}
+
+
+int main() {
+
+node * n=createNode(1,4.0,"aa",2,NULL);
+
+node * root=createNode(1,1.0,"aa",2,n);
+    
+
+
+}
